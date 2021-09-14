@@ -1,6 +1,6 @@
 # Setup
 title: Shawn's Log
-description: About AI, ML, and DL
+description: About Deep Learning and Computer Vision
 url: https://shawn615.github.io
 avatar: /profile.jpg
 paginate: 5
@@ -33,10 +33,10 @@ twitter:
   card: summary
 logo: logo.png
 social:
-  name: Seunghyeon SEO
+  name: Songzi Vong
   links:
-#    - https://twitter.com/vszhub
-    - https://github.com/shawn615
+    - https://twitter.com/vszhub
+    - https://github.com/vszhub
 google_site_verification: xxxxx
 lang: en
 
@@ -54,6 +54,6 @@ sass:
 
 # Specify the author for blog posts
 author:
-  name: Seunghyeon SEO
-  url: https://github.com/shawn615/
-  email: seunghyeon.seo615@gmail.com
+  name: Songzi Vong
+  url: https://github.com/vszhub/
+  email: vszhub@gmail.com
