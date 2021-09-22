@@ -11,11 +11,11 @@ tags:
 - IJCV 2021
 ---
 
-**Authors: Yifu Zhang*, Chunyu Wang*, Xinggang Wang, Wenjun Zeng, Wenyu Liu**
+***Authors: Yifu Zhang*, Chunyu Wang*, Xinggang Wang, Wenjun Zeng, Wenyu Liu***
 
 2020년 4월에 arxiv에 올라왔지만 최근에 나오고 있는 MOT 알고리즘과 비교하여도 성능 측면에서 꿀리지 않고, 심지어 속도 측면에서는 FairMOT가 현저히 앞서고 있다.
 
-![Overview](../imgs/FairMOT/File.jpg)
+![Overview](/imgs/FairMOT/File.jpg)
 본 논문에서 저자들은 re-ID task가 '공평하게 학습되지 않는다(not fairly learned)'는 점에 주목한다. 그 unfairness는 다음과 같다.
 - Unfairness Caused by Anchors
 
@@ -33,7 +33,7 @@ tags:
     - inference speed를 향상시킨다.
 
 FairMOT의 architecture는 다음과 같다.
-![Architecture](../imgs/FairMOT/File%20(1).jpg)
+![Architecture](/imgs/FairMOT/File%20(1).jpg)
 - Backbone Network
   - Deep Layer Aggregation(DLA)의 enhanced version을 ResNet-34에 적용한 DLA-34
     - 기존 DLA보다 더 많은 skip connections (FPN과 유사).
@@ -50,14 +50,14 @@ FairMOT의 architecture는 다음과 같다.
 
 실험을 살펴보자.
 - Fairness Issue in Anchors
-  ![Exp1](../imgs/FairMOT/File%20(2).jpg)
+  ![Exp1](/imgs/FairMOT/File%20(2).jpg)
   - ROI-Align (in Track-RCNN), POS-Anchor (in JDE), Center (in FairMOT), Center-BI (Bilinear Interpolation), Two-Stage, 이 5가지에 대해 비교 실험.
   - re-ID feature sampling 방법들인데, FairMOT의 방법인 object center에서 feature를 뽑는 Center/Center-BI가 4가지 지표에서 가장 좋은 수치들을 보여줌.
 
 
 - Fairness Issue in Features
   - 더 큰 네트워크를 사용하는 것이 그만큼 성능을 향상시키지는 않는 것을 확인.
-    ![Exp2](../imgs/FairMOT/File%20(3).jpg)
+    ![Exp2](/imgs/FairMOT/File%20(3).jpg)
   - ResNet-34-FPN의 경우, ResNet-50보다 parameter 수가 적지만 더 높은 MOTA 수치를 보여줌.
       - 큰 네트워크를 사용하는 것보다 feature fusion이 tracking 성능 향상에 더 기여하는 것을 확인.
   - ResNet-34-FPN과 DLA-34를 비교했을 때, TPR은 비슷하지만 AP는 DLA-34가 크게 앞섬.
@@ -66,13 +66,13 @@ FairMOT의 architecture는 다음과 같다.
 
 
 - Fairness Issue in Feature Dimensionality
-  ![Exp3](../imgs/FairMOT/File%20(6).jpg)
+  ![Exp3](/imgs/FairMOT/File%20(6).jpg)
   - 기존의 one-shot tracker에서는 512-dimension의 re-ID feature를 학습하지만, FairMOT에서는 64-dimension.
 
 
 - 그 외 정량/정성 실험 결과
-  ![Exp4](../imgs/FairMOT/File%20(10).jpg)
-  ![Exp5](../imgs/FairMOT/File%20(9).jpg)
+  ![Exp4](/imgs/FairMOT/File%20(10).jpg)
+  ![Exp5](/imgs/FairMOT/File%20(9).jpg)
 
 출처:
 - [https://arxiv.org/pdf/2004.01888.pdf](https://arxiv.org/pdf/2004.01888.pdf)
