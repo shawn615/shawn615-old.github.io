@@ -32,6 +32,7 @@ tags:
     - low-dimensional feature로 학습할 경우 over-fitting을 줄여준다.
     - inference speed를 향상시킨다.
 
+
 ### FairMOT의 architecture는 다음과 같다.
 ![Architecture](/imgs/FairMOT/File%20(1).jpg)
 - ### Backbone Network
@@ -47,6 +48,7 @@ tags:
 
 - ### Re-ID Branch
   - ### resulting feature map: 128 x W x H. 여기서 (x, y)를 center로 하는 object의 re-ID feature를 뽑아냄.
+
 
 ### 실험을 살펴보자.
 - ### Fairness Issue in Anchors
