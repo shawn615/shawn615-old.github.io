@@ -11,7 +11,7 @@ tags:
 - IJCV 2021
 ---
 
-###Authors: Yifu Zhang*, Chunyu Wang*, Xinggang Wang, Wenjun Zeng, Wenyu Liu
+**Authors: Yifu Zhang*, Chunyu Wang*, Xinggang Wang, Wenjun Zeng, Wenyu Liu**
 
 2020년 4월에 arxiv에 올라왔지만 최근에 나오고 있는 MOT 알고리즘과 비교하여도 성능 측면에서 꿀리지 않고, 심지어 속도 측면에서는 FairMOT가 현저히 앞서고 있다.
 
@@ -75,5 +75,5 @@ FairMOT의 architecture는 다음과 같다.
   ![Exp5](../imgs/FairMOT/File%20(9).jpg)
 
 출처:
-- https://arxiv.org/pdf/2004.01888.pdf
-- https://github.com/ifzhang/FairMOT
+- [https://arxiv.org/pdf/2004.01888.pdf](https://arxiv.org/pdf/2004.01888.pdf)
+- [https://github.com/ifzhang/FairMOT](https://github.com/ifzhang/FairMOT)
