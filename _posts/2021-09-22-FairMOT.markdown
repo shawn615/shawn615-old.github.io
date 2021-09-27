@@ -9,7 +9,6 @@ tags:
 - Computer Vision
 - Multiple Object Tracking
 - IJCV 2021
-comments: True
 ---
 
 ### **Authors: Yifu Zhang\*, Chunyu Wang\*, Xinggang Wang, Wenjun Zeng, Wenyu Liu**

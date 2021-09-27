@@ -10,7 +10,6 @@ tags:
 - Implicit Neural Representation
 - Autonomous Driving
 - ICCV 2021
-comments: True
 ---
 
 ### **Authors: Kashyap Chitta\*, Aditya Prakash\*, Andreas Geiger**
@@ -60,7 +59,7 @@ comments: True
   ![Architecture](/imgs/NEAT/File%20(2).jpg)
   - ### Encoder
     - To be written.
-  - ### Neural Attentional Field
+  - ### Neural Attention Field
     - To be written.
   - ### Decoder
     - To be written.

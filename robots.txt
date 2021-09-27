@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://shawn615.github.io/sitemap.xml
