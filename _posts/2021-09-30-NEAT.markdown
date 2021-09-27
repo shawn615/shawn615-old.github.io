@@ -10,6 +10,7 @@ tags:
 - Implicit Neural Representation
 - Autonomous Driving
 - ICCV 2021
+comments: True
 ---
 
 ### **Authors: Kashyap Chitta\*, Aditya Prakash\*, Andreas Geiger**
