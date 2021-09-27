@@ -12,6 +12,7 @@ tags:
 ---
 
 ### **Authors: Yifu Zhang\*, Chunyu Wang\*, Xinggang Wang, Wenjun Zeng, Wenyu Liu**
+### **Institutions: Huazhong University of Science and Technology, Microsoft Research Asia**
 
 ### 2020년 4월에 arxiv에 올라왔지만 최근에 나오고 있는 MOT 알고리즘과 비교하여도 성능 측면에서 꿀리지 않고, 심지어 속도 측면에서는 FairMOT가 현저히 앞서고 있다.
 

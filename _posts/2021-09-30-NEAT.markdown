@@ -1,0 +1,71 @@
+---
+layout: post
+title: "NEAT: Neural Attention Fields for End-to-End Autonomous Driving (ICCV 2021)"
+date: 2021-09-27 21:00:00 +0900
+categories:
+- Paper Review
+tags:
+- Deep Learning
+- Computer Vision
+- Implicit Neural Representation
+- Autonomous Driving
+- ICCV 2021
+---
+
+### **Authors: Kashyap Chitta\*, Aditya Prakash\*, Andreas Geiger**
+### **Institutions: Max Planck Institute for Intelligent Systems, University of Tübingen**
+
+### 최근 Tesla AI Day에서 발표된 자율주행 알고리즘과 유사한 알고리즘으로 (사실 Tesla AI Day 영상을 아직 안 봄;;), 올해 ICCV에 억셉된 논문이다.
+### 요새 꽤나 핫한 Implicit Neural Representation 컨셉을 도입하여, NEural ATtention fields (NEAT)라는 새로운 feature representation 방식을 제안한다.
+
+![Overview](/imgs/NEAT/File.jpg)
+### Autonomous driving 분야는 Imitation Learning (IL) 기반의 알고리즘이 주를 이루고 있다.
+### Imitation Learning이란, 해당 scene에 대해 sensory input이 주어졌을 때 expert의 행동을 예측하는 것을 목표로 한다.
+### 이러한 패러다임은 image auto-encoding, 2D semantic segmentation, Bird's Eye View (BEV) semantic segmentation 등의 auxiliary task를 같이 활용함으로써 발전해왔다.
+### 본 논문에서는 이 중 BEV semantic segmentation에 대해 초점을 맞추어, NEAT를 통해 query location (x,y,t)와 attention map 간의 효과적인 association을 이루었다.
+### 본 논문의 contribution은 다음과 같다.
+- ### NEAT Feature Representation
+
+  - 새로운 feature representation 방법인 NEAT를 제안하고, implicit decoder와 함께 architecture를 구성하여 trajectory planning과 BEV semantic prediction을 함께 수행한다.
+
+- ### Challenging New Evaluation Setting
+  - NEAT의 driving performance를 보여주기 위해 CARLA의 6 towns와 42 environmental conditions로 구성된 새로운 evaluation setting을 만들었다.
+
+- ### Visualization of Attention Maps and Semantic Scene Interpolations
+  - attention map과 semantic scene interpolation을 시각화함으로써 NEAT의 interpretability와 학습된 driving behavior를 효과적으로 보여주었다.
+
+
+### Method에 대한 설명이다.
+- ### Trajectory Planning
+  - waypoint: w<sub>t</sub>
+  - time-step t일 때 BEV projection 하에서 expert demonstration 자동차의 위치.
+  - 현재 time-step t = T에서 자동차의 위치는 (x, y) = (0, 0).
+  - t = T+1, ..., T+Z의 future time-step sequence가 모여서 trajectory 형성. Z는 fixed prediction horizon.
+  - 디폴트 값으로 S = 3 cameras 사용. 하나는 전방, 나머지 둘은 좌우로 60도.
+  - single frame (T = 1) 세팅으로 실험.
+
+- ### BEV Semantic Prediction
+  - waypoints prediction과는 달리 dense prediction task. (waypoints prediction은 discrete prediction task (Z = 4).)
+  - 1 <= t <= T+Z의 time interval과 spatial range에 bounded되는 spatiotemporal query location (x, y, t)에 대한 semantic label 예측.
+  - waypoints prediction에 사용되는 것과 동일한 coordinate system 사용. -> waypoints prediction을 dense prediction task라고 간주한다면, NEAT를 활용하여 BEV semantic prediction으로 풀 수 있음.
+  - 아래의 Figure 2와 같은 dense offset prediction task 제안.
+  ![Dense offset prediction](/imgs/NEAT/File%20(1).jpg)
+    - query location (x, y, t)로부터의 2-dimensional offset vectors **o**를 학습하는 것이 목적.
+    - 교차로에서 좌회전 또는 우회전이 모두 가능한 상황 등이 발생할 수 있으므로, driver intention을 반영하게끔 하는 것이 중요.
+    - target locations (x', y')을 input으로 같이 넣어줌.
+    - 즉 dense offset prediction의 목표는, 5-dimensional query point **p** = (x, y, t, x', y')에 대한 output **o**를 구하는 것.
+
+- ### Architecture
+  ![Architecture](/imgs/NEAT/File%20(2).jpg)
+  - ### Encoder
+    - To be written.
+  - ### Neural Attentional Field
+    - To be written.
+  - ### Decoder
+    - To be written.
+
+
+### 출처:
+- [https://arxiv.org/pdf/2109.04456.pdf](https://arxiv.org/pdf/2109.04456.pdf)
+- [https://github.com/autonomousvision/neat](https://github.com/autonomousvision/neat)
+- [http://www.cvlibs.net/publications/Chitta2021ICCV_supplementary.pdf](http://www.cvlibs.net/publications/Chitta2021ICCV_supplementary.pdf)
