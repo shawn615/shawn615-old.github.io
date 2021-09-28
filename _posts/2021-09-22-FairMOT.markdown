@@ -18,16 +18,16 @@ tags:
 
 ![Overview](/imgs/FairMOT/File.jpg)
 ### 본 논문에서 저자들은 re-ID task가 '공평하게 학습되지 않는다(not fairly learned)'는 점에 주목한다. 그 unfairness는 다음과 같다.
-- ### Unfairness Caused by Anchors
+- #### Unfairness Caused by Anchors
 
   기존의 anchor-based framework는 re-ID task 학습에 적합하지 않다. 왜냐하면,
   - "Detection first, re-ID secondary" 방식의 학습이기 때문에 re-ID 학습이 detection 학습 결과에 크게 의존한다.
   - object가 겹쳐 있을 경우 등의 상황에서, 하나의 anchor가 여러 개의 object에 대응되기 쉽다.
 
-- ### Unfairness Caused by Features
+- #### Unfairness Caused by Features
   - re-ID task에서는 같은 class의 다른 instance를 구별해야 하기 때문에, detection과 달리 low-level appearance features를 필요로 한다.
 
-- ### Unfairness Caused by Feature Dimension
+- #### Unfairness Caused by Feature Dimension
   - 기존의 re-ID task에서는 더 좋은 성능을 위해 high-dimensional feature를 학습했는데, 오히려 더 작은 차원의 feature를 학습하는 것이 one-shot MOT에 더 좋은 것을 확인하였다. 그 이유는,
     - detection의 feature dimension은 보통 [class number + box locations]로 작은 편인데, high-dimensional feature로 re-ID task를 학습하게 될 경우 detection accuracy에 오히려 안 좋은 영향을 주게 된다.
     - low-dimensional feature로 학습할 경우 over-fitting을 줄여준다.
@@ -36,44 +36,44 @@ tags:
 
 ### FairMOT의 architecture는 다음과 같다.
 ![Architecture](/imgs/FairMOT/File%20(1).jpg)
-- ### Backbone Network
-  - ### Deep Layer Aggregation(DLA)의 enhanced version을 ResNet-34에 적용한 DLA-34
+- #### Backbone Network
+  - #### Deep Layer Aggregation(DLA)의 enhanced version을 ResNet-34에 적용한 DLA-34
     - 기존 DLA보다 더 많은 skip connections (FPN과 유사).
     - up-sampling module의 convolution layer를 deformable convolution으로 대체.
     - input img: H x W -> output feature: C x H/4 x W/4
 
-- ### Detection Branch
-  - ### CenterNet 기반. backbone에 head 3개를 parallel하게 붙임.
+- #### Detection Branch
+  - #### CenterNet 기반. backbone에 head 3개를 parallel하게 붙임.
     - Heatmap Head: object center estimation
     - Box Offset/Size Head: object center로부터의 offset, box height/width estimation
 
-- ### Re-ID Branch
-  - ### resulting feature map: 128 x W x H. 여기서 (x, y)를 center로 하는 object의 re-ID feature를 뽑아냄.
+- #### Re-ID Branch
+  - #### resulting feature map: 128 x W x H. 여기서 (x, y)를 center로 하는 object의 re-ID feature를 뽑아냄.
 
 
 ### 실험을 살펴보자.
-- ### Fairness Issue in Anchors
+- #### Fairness Issue in Anchors
   ![Exp1](/imgs/FairMOT/File%20(2).jpg)
   - ROI-Align (in Track-RCNN), POS-Anchor (in JDE), Center (in FairMOT), Center-BI (Bilinear Interpolation), Two-Stage, 이 5가지에 대해 비교 실험.
   - re-ID feature sampling 방법들인데, FairMOT의 방법인 object center에서 feature를 뽑는 Center/Center-BI가 4가지 지표에서 가장 좋은 수치들을 보여줌.
 
 
-- ### Fairness Issue in Features
-  - ### 더 큰 네트워크를 사용하는 것이 그만큼 성능을 향상시키지는 않는 것을 확인.
+- #### Fairness Issue in Features
+  - #### 더 큰 네트워크를 사용하는 것이 그만큼 성능을 향상시키지는 않는 것을 확인.
     ![Exp2](/imgs/FairMOT/File%20(3).jpg)
-  - ### ResNet-34-FPN의 경우, ResNet-50보다 parameter 수가 적지만 더 높은 MOTA 수치를 보여줌.
+  - #### ResNet-34-FPN의 경우, ResNet-50보다 parameter 수가 적지만 더 높은 MOTA 수치를 보여줌.
       - 큰 네트워크를 사용하는 것보다 feature fusion이 tracking 성능 향상에 더 기여하는 것을 확인.
-  - ### ResNet-34-FPN과 DLA-34를 비교했을 때, TPR은 비슷하지만 AP는 DLA-34가 크게 앞섬.
+  - #### ResNet-34-FPN과 DLA-34를 비교했을 때, TPR은 비슷하지만 AP는 DLA-34가 크게 앞섬.
       - re-ID feature 측면에서는 비슷하지만, detection 성능에서 DLA-34가 크게 앞서는 것.
       - DLA-34의 deformable convolution이 object center에서 feature를 뽑아내는 것에서 오는 FairMOT의 단점을 보완한 것이 아닐까.
 
 
-- ### Fairness Issue in Feature Dimensionality
+- #### Fairness Issue in Feature Dimensionality
   ![Exp3](/imgs/FairMOT/File%20(6).jpg)
-  - ### 기존의 one-shot tracker에서는 512-dimension의 re-ID feature를 학습하지만, FairMOT에서는 64-dimension.
+  - #### 기존의 one-shot tracker에서는 512-dimension의 re-ID feature를 학습하지만, FairMOT에서는 64-dimension.
 
 
-- ### 그 외 정량/정성 실험 결과
+- #### 그 외 정량/정성 실험 결과
   ![Exp4](/imgs/FairMOT/File%20(10).jpg)
   ![Exp5](/imgs/FairMOT/File%20(9).jpg)
 
